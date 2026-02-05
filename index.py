@@ -53,46 +53,30 @@ plt.show()
 import numpy as np
 import pandas as pd
 
-# -----------------------------
-# 1. Load dataset
-# -----------------------------
+
 data = pd.read_csv("studentdata.csv")
 
-# -----------------------------
-# 2. Features and target
-# -----------------------------
+
 X = data[['reading_score', 'writing_score']]  # Only numeric features
 y = data['math_score']
 
-# -----------------------------
-# 3. Train-test split
-# -----------------------------
 x_train, x_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=42
 )
 
-# -----------------------------
-# 4. Train Linear Regression model
-# -----------------------------
+
 model = LinearRegression()
 model.fit(x_train, y_train)
 
-# -----------------------------
-# 5. Predict on test set
-# -----------------------------
+
 y_pred = model.predict(x_test)
 
-# -----------------------------
-# 6. Evaluate model
-# -----------------------------
-# MSE and RMSE
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 
-# R² score
+
 r2 = r2_score(y_test, y_pred)
 
-# Percentage error and accuracy
 y_test_array = y_test.to_numpy()
 y_pred_array = y_pred
 
@@ -103,6 +87,7 @@ print("MSE:", mse)
 print("RMSE:", rmse)
 print("R² Score:", r2)
 print(f"Model Accuracy (based on mean percentage error): {accuracy:.2f} %")
+
 
 
 
